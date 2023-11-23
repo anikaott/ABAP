@@ -1,0 +1,55 @@
+@Metadata.layer: #CUSTOMER
+
+@UI.headerInfo:
+{ 
+
+typeNamePlural: 'Employees',   //Anzahl und Name der gefundenen Travels
+typeName: 'Employee',
+title.value: 'id'
+
+
+}
+
+annotate entity ZC_ABAP_GEBERIT_EMPLOYEE
+    with 
+{
+    @UI.facet: [ 
+
+{ position: 10, type: #FIELDGROUP_REFERENCE, targetQualifier: 'TravelDetails', label: 'Travel Details'}, // wichtig ohne bindestrich weil bezeichner bei targetQualifier
+{ position: 20 , type: #FIELDGROUP_REFERENCE, targetQualifier: 'AdminData', label: 'Admisnistrativ Data'}
+// -> wo sollen daten angezeigt werden 
+
+ ]
+
+/* FIELDS */
+ //   element_name;
+ 
+ @UI.fieldGroup: [{ position: 10, qualifier: 'AdminData' }]
+ Id;
+ 
+ @UI.lineItem: [{ position: 10 }]
+ @UI.fieldGroup: [{ position: 10, qualifier: 'TravelDetails' }]
+ @UI.selectionField: [{ position: 10 }]  //SUchleiste oben 
+ EmployeeNumber;
+ @UI.fieldGroup: [{ position: 20, qualifier: 'TravelDetails' }]
+ @UI.lineItem: [{ position: 20 }]   //Position unten
+ Forname;
+ @UI.fieldGroup: [{ position: 30, qualifier: 'TravelDetails' }]
+ @UI.lineItem: [{ position: 30 }]
+ Surname;
+ @UI.fieldGroup: [{ position: 40, qualifier: 'TravelDetails' }]
+ @UI.lineItem: [{ position: 40 }]
+ @UI.selectionField: [{ position: 20 }]
+ EntryDate;
+
+ 
+ @UI.fieldGroup: [{ position: 20, qualifier: 'AdminData' }]
+ CreatedBy;
+ @UI.fieldGroup: [{ position: 30, qualifier: 'AdminData' }]
+ CreatedAt;
+ @UI.fieldGroup: [{ position: 40, qualifier: 'AdminData' }]
+ LastChangedBy;
+ @UI.fieldGroup: [{ position: 50, qualifier: 'AdminData' }]
+ LastChangedAt;
+    
+}

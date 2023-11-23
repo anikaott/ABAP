@@ -1,0 +1,39 @@
+managed implementation in class zbp_abap_geberit_employee unique;
+strict ( 2 );
+
+define behavior for ZR_ABAP_GEBERIT_EMPLOYEE //alias <alias_name>
+persistent table zabap_employee
+lock master
+authorization master ( instance )
+//etag master <field_name>
+{
+  create;
+  update;
+  delete;
+  association _Demands { create; }
+  association _Requests { create; }
+}
+
+define behavior for ZR_ABAP_GEBERIT_DEMAND //alias <alias_name>
+persistent table zabap_demand
+lock dependent by _Employee
+authorization dependent by _Employee
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly ) Employee;
+  association _Employee;
+}
+
+define behavior for ZR_ABAP_GEBERIT_REQUEST //alias <alias_name>
+persistent table zabap_request
+lock dependent by _Employee
+authorization dependent by _Employee
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly ) Applicant;
+  association _Employee;
+}
