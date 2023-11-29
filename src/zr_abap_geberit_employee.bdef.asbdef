@@ -1,39 +1,95 @@
 managed implementation in class zbp_abap_geberit_employee unique;
 strict ( 2 );
+with draft;
 
-define behavior for ZR_ABAP_GEBERIT_EMPLOYEE //alias <alias_name>
+define behavior for ZR_ABAP_GEBERIT_EMPLOYEE alias Employee//alias <alias_name>
 persistent table zabap_employee
+draft table zabap_geberit_d
 lock master
+total etag LastChangedAt
 authorization master ( instance )
 //etag master <field_name>
 {
   create;
   update;
   delete;
-  association _Demands { create; }
-  association _Requests { create; }
+  association _Demands { create; with draft;  }
+  association _Requests { create; with draft;  }
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft determine action Prepare;
+  draft action Resume;
+
+  field( readonly, numbering : managed) Id;
+
+  mapping for zabap_employee corresponding {
+
+     EmployeeNumber = employee_number;
+     Forname = forname;
+     Surname = surname;
+     EntryDate = entry_date;
+     CreatedAt = created_at;
+     CreatedBy = created_by;
+     LastChangedAt = last_changed_at;
+     LastChangedBy = last_changed_by;
+
+  }
 }
 
-define behavior for ZR_ABAP_GEBERIT_DEMAND //alias <alias_name>
+
+
+
+define behavior for ZR_ABAP_GEBERIT_DEMAND alias Demand//alias <alias_name>
 persistent table zabap_demand
+draft table zabap_demand_d
 lock dependent by _Employee
 authorization dependent by _Employee
 //etag master <field_name>
 {
-  update;
-  delete;
+
+  field ( readonly, numbering : managed ) Id;
   field ( readonly ) Employee;
-  association _Employee;
-}
+  association _Employee {with draft; }
+
+  mapping for zabap_demand corresponding {
+     Employee = employee;
+     DateYear = date_year;
+     VacationDays = vacation_days;
+     CreatedAt = created_at;
+     CreatedBy = created_by;
+     LastChangedAt = last_changed_at;
+     LastChangedBy = last_changed_by;
+  }
+  }
+
+
 
 define behavior for ZR_ABAP_GEBERIT_REQUEST //alias <alias_name>
 persistent table zabap_request
+draft table zabap_request_d
 lock dependent by _Employee
 authorization dependent by _Employee
 //etag master <field_name>
 {
+
   update;
   delete;
+  field ( readonly, numbering : managed ) Id;
   field ( readonly ) Applicant;
-  association _Employee;
+  association _Employee {with draft; }
+
+  mapping for zabap_request corresponding{
+     Applicant = applicant;
+     Approver = approver;
+     StartDate = start_date;
+     EndDate = end_date;
+     Commentary = commentary;
+     Status = status;
+     CreatedAt = created_at;
+     CreatedBy = created_by;
+     LastChangedAt = last_changed_at;
+     LastChangedBy = last_changed_by;
+ }
 }

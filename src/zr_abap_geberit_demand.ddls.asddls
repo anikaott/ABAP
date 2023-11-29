@@ -3,6 +3,7 @@
 define view entity ZR_ABAP_GEBERIT_DEMAND as select from zabap_demand
 association to parent ZR_ABAP_GEBERIT_EMPLOYEE as _Employee on $projection.Employee = _Employee.Id // NOCHMAL ANSCHAUEN - MUSS ES EMPLOYEE SEIN ?
 {
+    @EndUserText: { label: 'Demand Id', quickInfo: 'Demand Id'}
     key id as Id,
     employee as Employee,
     date_year as DateYear,

@@ -3,6 +3,7 @@
 define view entity ZR_ABAP_GEBERIT_REQUEST as select from zabap_request
 association to parent ZR_ABAP_GEBERIT_EMPLOYEE as _Employee on $projection.Applicant = _Employee.Id
 {
+    @EndUserText: { label: 'Request Id', quickInfo: 'Request Id'}
     key id as Id,
     applicant as Applicant,
     approver as Approver,

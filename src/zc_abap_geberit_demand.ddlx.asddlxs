@@ -1,0 +1,45 @@
+@Metadata.layer: #CUSTOMER
+@UI.headerInfo:
+{
+  typeName: 'Demand',
+  typeNamePlural: 'Demands',
+  title.value: 'Id',
+  description.value: 'VacationDays'
+}
+annotate view ZC_ABAP_GEBERIT_DEMAND with
+{
+
+  /* Facets */
+  @UI.facet:
+  [
+    { position: 10, targetQualifier: 'DemandDetails', label: 'Demand Details', type: #FIELDGROUP_REFERENCE },
+    { position: 20, targetQualifier: 'AdminData', label: 'Administrative Data', type: #FIELDGROUP_REFERENCE }
+  ]
+
+  /* Fields */
+  @UI.fieldGroup: [{ position: 10, qualifier: 'AdminData' }]
+  Id;
+
+  @UI.fieldGroup: [{ position: 20, qualifier: 'AdminData' }]
+  Employee;
+
+  @UI.lineItem: [{ position: 10 }]
+  @UI.fieldGroup: [{ position: 10, qualifier: 'DemandDetails' }]
+  DateYear;
+
+  @UI.lineItem: [{ position: 20 }]
+  @UI.fieldGroup: [{ position: 20, qualifier: 'DemandDetails' }]
+  VacationDays;
+  
+  
+  
+ @UI.fieldGroup: [{ position: 20, qualifier: 'AdminData' }]
+ CreatedBy;
+ @UI.fieldGroup: [{ position: 30, qualifier: 'AdminData' }]
+ CreatedAt;
+ @UI.fieldGroup: [{ position: 40, qualifier: 'AdminData' }]
+ LastChangedBy;
+ @UI.fieldGroup: [{ position: 50, qualifier: 'AdminData' }]
+ LastChangedAt;
+
+}

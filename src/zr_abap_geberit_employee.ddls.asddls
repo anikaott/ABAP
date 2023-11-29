@@ -4,6 +4,7 @@ define root view entity ZR_ABAP_GEBERIT_EMPLOYEE as select from zabap_employee
 composition of ZR_ABAP_GEBERIT_DEMAND as _Demands
 composition of ZR_ABAP_GEBERIT_REQUEST as _Requests
 {
+    @EndUserText: { label: 'Employee Id', quickInfo: 'Employee Id'}
     key id as Id,
     employee_number as EmployeeNumber,
     forname as Forname,

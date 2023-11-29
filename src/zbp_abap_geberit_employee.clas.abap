@@ -1,15 +1,5 @@
-class ZBP_ABAP_GEBERIT_EMPLOYEE definition
-  public
-  abstract
-  final
-  create public .
-
-public section.
-protected section.
-private section.
+CLASS zbp_abap_geberit_employee DEFINITION PUBLIC ABSTRACT FINAL FOR BEHAVIOR OF zr_abap_geberit_employee.
 ENDCLASS.
 
-
-
-CLASS ZBP_ABAP_GEBERIT_EMPLOYEE IMPLEMENTATION.
+CLASS zbp_abap_geberit_employee IMPLEMENTATION.
 ENDCLASS.

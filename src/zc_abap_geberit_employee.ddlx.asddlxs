@@ -5,7 +5,7 @@
 
 typeNamePlural: 'Employees',   //Anzahl und Name der gefundenen Travels
 typeName: 'Employee',
-title.value: 'id'
+title.value: 'EmployeeNumber'
 
 
 }
@@ -15,8 +15,10 @@ annotate entity ZC_ABAP_GEBERIT_EMPLOYEE
 {
     @UI.facet: [ 
 
-{ position: 10, type: #FIELDGROUP_REFERENCE, targetQualifier: 'TravelDetails', label: 'Travel Details'}, // wichtig ohne bindestrich weil bezeichner bei targetQualifier
-{ position: 20 , type: #FIELDGROUP_REFERENCE, targetQualifier: 'AdminData', label: 'Admisnistrativ Data'}
+{ position: 10, type: #FIELDGROUP_REFERENCE, targetQualifier: 'EmployeeDetails', label: 'Employee Details'}, // wichtig ohne bindestrich weil bezeichner bei targetQualifier
+{ position: 20 , type: #FIELDGROUP_REFERENCE, targetQualifier: 'AdminData', label: 'Administrative Data'},
+{ position: 30 , type: #LINEITEM_REFERENCE, targetQualifier: '_Demands', label: 'Demands'},
+{ position: 40 , type: #LINEITEM_REFERENCE, targetQualifier: '_Requests', label: 'Request'}
 // -> wo sollen daten angezeigt werden 
 
  ]
@@ -25,19 +27,20 @@ annotate entity ZC_ABAP_GEBERIT_EMPLOYEE
  //   element_name;
  
  @UI.fieldGroup: [{ position: 10, qualifier: 'AdminData' }]
+ @UI.lineItem: [{ position: 50 }]
  Id;
  
  @UI.lineItem: [{ position: 10 }]
- @UI.fieldGroup: [{ position: 10, qualifier: 'TravelDetails' }]
+ @UI.fieldGroup: [{ position: 10, qualifier: 'EmployeeDetails' }]
  @UI.selectionField: [{ position: 10 }]  //SUchleiste oben 
  EmployeeNumber;
- @UI.fieldGroup: [{ position: 20, qualifier: 'TravelDetails' }]
+ @UI.fieldGroup: [{ position: 20, qualifier: 'EmployeeDetails' }]
  @UI.lineItem: [{ position: 20 }]   //Position unten
  Forname;
- @UI.fieldGroup: [{ position: 30, qualifier: 'TravelDetails' }]
+ @UI.fieldGroup: [{ position: 30, qualifier: 'EmployeeDetails' }]
  @UI.lineItem: [{ position: 30 }]
  Surname;
- @UI.fieldGroup: [{ position: 40, qualifier: 'TravelDetails' }]
+ @UI.fieldGroup: [{ position: 40, qualifier: 'EmployeeDetails' }]
  @UI.lineItem: [{ position: 40 }]
  @UI.selectionField: [{ position: 20 }]
  EntryDate;
