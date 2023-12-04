@@ -28,12 +28,16 @@ DATA request TYPE zabap_request.
 DELETE FROM zabap_employee.
 DELETE FROM zabap_demand.
 DELETE FROM zabap_request.
-
+DELETE FROM zabap_geberit_d.
+DELETE FROM zabap_demand_d.
+DELETE FROM zabap_request_d.
 "-------------------EMPLOYEE-----------------"
 
+DATA hans TYPE sysuuid_x16.
 employee-client = sy-mandt.
-employee-id = cl_system_uuid=>create_uuid_x16_static(  ).
-employee-employee_number = '111111'.
+hans = cl_system_uuid=>create_uuid_x16_static(  ).
+employee-id = hans.
+employee-employee_number = '000001'.
 employee-forname = 'Hans'.
 employee-surname = 'Maier'.
 employee-entry_date = '20000501'.
@@ -42,8 +46,10 @@ employee-created_by = 'GENERATOR'.
 GET TIME STAMP FIELD employee-last_changed_at.
 APPEND employee to employees.
 
+DATA lisa TYPE sysuuid_x16.
 employee-client = sy-mandt.
-employee-id = cl_system_uuid=>create_uuid_x16_static(  ).
+lisa = cl_system_uuid=>create_uuid_x16_static(  ).
+employee-id = lisa.
 employee-employee_number = '000002'.
 employee-forname = 'Lisa'.
 employee-surname = 'Mueller'.
@@ -53,8 +59,10 @@ employee-created_by = 'GENERATOR'.
 GET TIME STAMP FIELD employee-last_changed_at.
 APPEND employee to employees.
 
+DATA petra TYPE sysuuid_x16.
 employee-client = sy-mandt.
-employee-id = cl_system_uuid=>create_uuid_x16_static(  ).
+petra = cl_system_uuid=>create_uuid_x16_static(  ).
+employee-id = petra.
 employee-employee_number = '000003'.
 employee-forname = 'Petra'.
 employee-surname = 'Schmid'.
@@ -68,7 +76,7 @@ APPEND employee to employees.
 
 demand-client = sy-mandt.
 demand-id = cl_system_uuid=>create_uuid_x16_static(  ).
-demand-employee = 'Hans Maier'.
+demand-employee = hans.
 demand-date_year = '2022'.
 demand-vacation_days = '30'.
 GET TIME STAMP FIELD demand-created_at.
@@ -78,7 +86,8 @@ APPEND demand to demands.
 
 demand-client = sy-mandt.
 demand-id = cl_system_uuid=>create_uuid_x16_static(  ).
-demand-employee = 'Hans Maier'.
+*employee-id = hans.
+demand-employee = hans.
 demand-date_year = '2023'.
 demand-vacation_days = '30'.
 GET TIME STAMP FIELD demand-created_at.
@@ -89,7 +98,7 @@ APPEND demand to demands.
 
 demand-client = sy-mandt.
 demand-id = cl_system_uuid=>create_uuid_x16_static(  ).
-demand-employee = 'Lisa Mueller'.
+demand-employee = lisa.
 demand-date_year = '2023'.
 demand-vacation_days = '30'.
 GET TIME STAMP FIELD demand-created_at.
@@ -99,7 +108,7 @@ APPEND demand to demands.
 
 demand-client = sy-mandt.
 demand-id = cl_system_uuid=>create_uuid_x16_static(  ).
-demand-employee = 'Petra Schmid'.
+demand-employee = petra.
 demand-date_year = '2023'.
 demand-vacation_days = '7'.
 GET TIME STAMP FIELD demand-created_at.
@@ -111,10 +120,10 @@ APPEND demand to demands.
 
 request-client = sy-mandt.
 request-id = cl_system_uuid=>create_uuid_x16_static(  ).
-request-applicant = 'Hans Maier'.
+request-applicant = hans.
 request-start_date = '20220701'.
 request-end_date = '20220710'.
-request-approver = 'Lisa Müller'.
+request-approver = lisa.
 request-commentary = 'Sommerurlaub'.
 request-status = 'G'.
 GET TIME STAMP FIELD request-created_at.
@@ -124,10 +133,10 @@ APPEND request to requests.
 
 request-client = sy-mandt.
 request-id = cl_system_uuid=>create_uuid_x16_static(  ).
-request-applicant = 'Hans Maier'.
+request-applicant = hans.
 request-start_date = '20221227'.
 request-end_date = '20221230'.
-request-approver = 'Lisa Müller'.
+request-approver = lisa.
 request-commentary = 'Weihnachtsurlaub'.
 request-status = 'A'.
 GET TIME STAMP FIELD request-created_at.
@@ -137,10 +146,10 @@ APPEND request to requests.
 
 request-client = sy-mandt.
 request-id = cl_system_uuid=>create_uuid_x16_static(  ).
-request-applicant = 'Hans Maier'.
+request-applicant = hans.
 request-start_date = '20221228'.
 request-end_date = '20221230'.
-request-approver = 'Lisa Müller'.
+request-approver = lisa.
 request-commentary = 'Weihnachtsurlaub (2. Versuch)'.
 request-status = 'G'.
 GET TIME STAMP FIELD request-created_at.
@@ -150,10 +159,10 @@ APPEND request to requests.
 
 request-client = sy-mandt.
 request-id = cl_system_uuid=>create_uuid_x16_static(  ).
-request-applicant = 'Hans Maier'.
+request-applicant = hans.
 request-start_date = '20230527'.
 request-end_date = '20230614'.
-request-approver = 'Lisa Müller'.
+request-approver = lisa.
 request-commentary = ' '.
 request-status = 'Genehmigt'.
 GET TIME STAMP FIELD request-created_at.
@@ -163,10 +172,10 @@ APPEND request to requests.
 
 request-client = sy-mandt.
 request-id = cl_system_uuid=>create_uuid_x16_static(  ).
-request-applicant = 'Hans Maier'.
+request-applicant = hans.
 request-start_date = '20231220'.
 request-end_date = '20231231'.
-request-approver = 'Lisa Müller'.
+request-approver = lisa.
 request-commentary = 'Winterurlaub'.
 request-status = 'B'.
 GET TIME STAMP FIELD request-created_at.
@@ -176,10 +185,10 @@ APPEND request to requests.
 
 request-client = sy-mandt.
 request-id = cl_system_uuid=>create_uuid_x16_static(  ).
-request-applicant = 'Petra Schmid'.
+request-applicant = petra.
 request-start_date = '20231227'.
 request-end_date = '20231231'.
-request-approver = 'Hans Maier'.
+request-approver = hans.
 request-commentary = 'Weinachtsurlaub'.
 request-status = 'B'.
 GET TIME STAMP FIELD request-created_at.

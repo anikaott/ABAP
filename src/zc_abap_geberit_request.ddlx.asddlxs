@@ -39,8 +39,8 @@ annotate view ZC_ABAP_GEBERIT_REQUEST with
   @UI.fieldGroup: [{ position: 40, qualifier: 'RequestDetails' }]
   Commentary;
   
-  @UI.lineItem: [{ position: 50 }]
-  @UI.fieldGroup: [{ position: 50, qualifier: 'RequestDetails' }]
+  @UI.lineItem: [{ position: 50, criticality: 'StatusCriticality'}]
+  @UI.fieldGroup: [{ position: 50, qualifier: 'RequestDetails', criticality: 'StatusCriticality'}]
   Status;
   
   

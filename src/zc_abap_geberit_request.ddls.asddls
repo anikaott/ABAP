@@ -5,6 +5,7 @@ define view entity ZC_ABAP_GEBERIT_REQUEST as projection on ZR_ABAP_GEBERIT_REQU
 {
     key Id,
     Applicant,
+    @Consumption.valueHelpDefinition: [{ entity: { name: 'ZI_ABAP_GEBERIT_APPROVER_VH', element: 'Id' } }]
     Approver,
     StartDate,
     EndDate,
@@ -14,5 +15,10 @@ define view entity ZC_ABAP_GEBERIT_REQUEST as projection on ZR_ABAP_GEBERIT_REQU
     CreatedAt,
     LastChangedBy,
     LastChangedAt,
+    
+    ApproverName,
+    ApplicantName,
+    
+    StatusCriticality,
     _Employee : redirected to parent ZC_ABAP_GEBERIT_EMPLOYEE
 }

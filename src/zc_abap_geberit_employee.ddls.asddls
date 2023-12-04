@@ -3,7 +3,8 @@
 @Metadata.allowExtensions: true
 @Search.searchable: true
 define root view entity ZC_ABAP_GEBERIT_EMPLOYEE
-  provider contract transactional_query as projection on ZR_ABAP_GEBERIT_EMPLOYEE
+  provider contract transactional_query 
+  as projection on ZR_ABAP_GEBERIT_EMPLOYEE
 {
     key Id,
     EmployeeNumber,
