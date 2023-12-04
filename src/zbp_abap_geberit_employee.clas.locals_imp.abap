@@ -3,12 +3,17 @@ CLASS lhc_Employee DEFINITION INHERITING FROM cl_abap_behavior_handler.
 
     METHODS get_instance_authorizations FOR INSTANCE AUTHORIZATION
       IMPORTING keys REQUEST requested_authorizations FOR Employee RESULT result.
+   " METHODS notenough FOR MODIFY
+"IMPORTING keys FOR ACTION employee~notenough RESULT result.
 
 ENDCLASS.
 
-CLASS lhc_Employee IMPLEMENTATION.
+ CLASS lhc_Employee IMPLEMENTATION.
 
-  METHOD get_instance_authorizations.
+ METHOD get_instance_authorizations.
   ENDMETHOD.
+
+
+ .
 
 ENDCLASS.

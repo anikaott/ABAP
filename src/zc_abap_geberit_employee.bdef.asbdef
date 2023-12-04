@@ -11,10 +11,12 @@ define behavior for ZC_ABAP_GEBERIT_EMPLOYEE //alias <alias_name>
   use association _Demands { create; with draft;}
   use association _Requests { create; with draft;}
 
+  /*use action NotEnough;*/
+
   use action Activate;
   use action Discard;
   use action Edit;
-   use action Prepare;
+  use action Prepare;
   use action Resume;
 }
 

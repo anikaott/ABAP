@@ -15,6 +15,9 @@ annotate view ZC_ABAP_GEBERIT_DEMAND with
     { position: 10, targetQualifier: 'DemandDetails', label: 'Demand Details', type: #FIELDGROUP_REFERENCE },
     { position: 20, targetQualifier: 'AdminData', label: 'Administrative Data', type: #FIELDGROUP_REFERENCE }
   ]
+  
+     /* Actions */
+ /* @UI.lineItem: [{ position: 10, type: #FOR_ACTION, dataAction: 'NotEnough', label: 'Not Enough' }] */
 
   /* Fields */
   @UI.fieldGroup: [{ position: 10, qualifier: 'AdminData' }]

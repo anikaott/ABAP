@@ -21,10 +21,11 @@ annotate entity ZC_ABAP_GEBERIT_EMPLOYEE
 // -> wo sollen daten angezeigt werden 
 
  ]
+ 
+
 
 /* FIELDS */
  //   element_name;
- 
  @UI.fieldGroup: [{ position: 10, qualifier: 'AdminData' }]
  @UI.lineItem: [{ position: 50 }]
  Id;
