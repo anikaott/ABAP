@@ -1,4 +1,3 @@
-
 @AccessControl.authorizationCheck: #NOT_REQUIRED
 @EndUserText.label: 'Text for Approver'
 

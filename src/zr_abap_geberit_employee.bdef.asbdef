@@ -25,9 +25,11 @@ authorization master ( instance )
   draft action Resume;
 
   field( readonly, numbering : managed) Id;
+  field( readonly ) CreatedAt, CreatedBy, LastChangedAt, LastChangedBy;
 
   mapping for zabap_employee corresponding {
 
+     Id = id;
      EmployeeNumber = employee_number;
      Forname = forname;
      Surname = surname;
@@ -51,8 +53,13 @@ authorization dependent by _Employee
 //etag master <field_name>
 {
 
+  update;
+  delete;
+
+
   field ( readonly, numbering : managed ) Id;
-  field ( readonly ) Employee;
+  field( readonly ) Employee;
+  field ( readonly ) CreatedBy, CreatedAt, LastChangedAt, LastChangedBy;
   association _Employee {with draft; }
 
   mapping for zabap_demand corresponding {
@@ -78,11 +85,26 @@ authorization dependent by _Employee
 
   update;
   delete;
+
+  action ApproveRequest result [1] $self;
+  action DeclineRequest result [1] $self;
+
+  determination determinestatus on modify { create; }
+  determination determinestatusrequestcomment on modify { field Commentary; }
+
+  determine action ValidateRequest {
+  validation ValidateDates;
+  }
+  validation ValidateDates on save { create; }
+
   field ( readonly, numbering : managed ) Id;
-  field ( readonly ) Applicant;
+  field ( mandatory : create ) Approver, StartDate, EndDate;
+  field ( readonly : update ) Approver, StartDate, EndDate;
+  field ( readonly ) Applicant, Status, CreatedAt, CreatedBy, LastChangedAt, LastChangedBy;
   association _Employee {with draft; }
 
   mapping for zabap_request corresponding{
+     Id = id;
      Applicant = applicant;
      Approver = approver;
      StartDate = start_date;

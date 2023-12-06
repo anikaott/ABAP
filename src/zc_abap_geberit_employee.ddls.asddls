@@ -20,6 +20,7 @@ define root view entity ZC_ABAP_GEBERIT_EMPLOYEE
     LastChangedBy,
     LastChangedAt,
     
+    
     _Requests : redirected to composition child ZC_ABAP_GEBERIT_REQUEST,
     _Demands: redirected to composition child ZC_ABAP_GEBERIT_DEMAND
 }

@@ -16,9 +16,10 @@ define view entity ZC_ABAP_GEBERIT_REQUEST as projection on ZR_ABAP_GEBERIT_REQU
     LastChangedBy,
     LastChangedAt,
     
+    StatusName,
+    StatusCriticality,
     ApproverName,
     ApplicantName,
     
-    StatusCriticality,
     _Employee : redirected to parent ZC_ABAP_GEBERIT_EMPLOYEE
 }

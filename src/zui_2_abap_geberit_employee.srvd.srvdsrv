@@ -1,0 +1,5 @@
+@EndUserText.label: 'ZUI_2_Employee'
+define service ZUI_2_ABAP_GEBERIT_EMPLOYEE {
+  expose ZC_2_ABAP_GEBERIT_EMPLOYEE as Employee;
+  expose ZC_2_ABAP_GEBERIT_REQUEST  as Request;
+}
