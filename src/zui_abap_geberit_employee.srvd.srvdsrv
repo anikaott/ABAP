@@ -1,6 +1,6 @@
 @EndUserText.label: 'ZUI_Employee'
 define service ZUI_ABAP_GEBERIT_EMPLOYEE {
   expose ZC_ABAP_GEBERIT_EMPLOYEE as Employee;
-  expose ZC_ABAP_GEBERIT_DEMAND   as Demand;
-  expose ZC_ABAP_GEBERIT_REQUEST  as Request;
+  expose ZC_ABAP_GEBERIT_DEMAND   as Demands;
+  expose ZC_ABAP_GEBERIT_REQUEST  as Requests;
 }

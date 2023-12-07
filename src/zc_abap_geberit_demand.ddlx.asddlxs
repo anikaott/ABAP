@@ -3,7 +3,7 @@
 {
   typeName: 'Demand',
   typeNamePlural: 'Demands',
-  title.value: 'Id',
+  title.value: 'DateYear',
   description.value: 'VacationDays'
 }
 annotate view ZC_ABAP_GEBERIT_DEMAND with
@@ -12,7 +12,7 @@ annotate view ZC_ABAP_GEBERIT_DEMAND with
   /* Facets */
   @UI.facet:
   [
-    { position: 10, targetQualifier: 'DemandDetails', label: 'Demand Details', type: #FIELDGROUP_REFERENCE },
+    { position: 10, targetQualifier: 'RequestDetails', label: 'Request Details', type: #FIELDGROUP_REFERENCE },
     { position: 20, targetQualifier: 'AdminData', label: 'Administrative Data', type: #FIELDGROUP_REFERENCE }
   ]
   
@@ -23,15 +23,16 @@ annotate view ZC_ABAP_GEBERIT_DEMAND with
   @UI.fieldGroup: [{ position: 10, qualifier: 'AdminData' }]
   Id;
 
-  @UI.fieldGroup: [{ position: 20, qualifier: 'AdminData' }]
+  @UI.fieldGroup: [{ position: 20, qualifier: 'RequestDetails' }]
+  @UI.lineItem: [ { position: 20 } ]   // qualifier: 'RequestDetails
   Employee;
 
   @UI.lineItem: [{ position: 10 }]
-  @UI.fieldGroup: [{ position: 10, qualifier: 'DemandDetails' }]
+  @UI.fieldGroup: [{ position: 10, qualifier: 'RequestDetails' }]
   DateYear;
 
   @UI.lineItem: [{ position: 20 }]
-  @UI.fieldGroup: [{ position: 20, qualifier: 'DemandDetails' }]
+  @UI.fieldGroup: [{ position: 20, qualifier: 'RequestDetails' }]
   VacationDays;
   
   

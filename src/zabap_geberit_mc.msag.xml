@@ -12,13 +12,31 @@
      <SPRSL>E</SPRSL>
      <ARBGB>ZABAP_GEBERIT_MC</ARBGB>
      <MSGNR>001</MSGNR>
-     <TEXT>Not enough vacation days</TEXT>
+     <TEXT>The request &amp;1 has been successfully approved.</TEXT>
     </T100>
     <T100>
      <SPRSL>E</SPRSL>
      <ARBGB>ZABAP_GEBERIT_MC</ARBGB>
      <MSGNR>002</MSGNR>
-     <TEXT>End date is before Start date</TEXT>
+     <TEXT>The request &amp;1 has been successfully declined.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZABAP_GEBERIT_MC</ARBGB>
+     <MSGNR>003</MSGNR>
+     <TEXT>The request &amp;1 has been approved.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZABAP_GEBERIT_MC</ARBGB>
+     <MSGNR>004</MSGNR>
+     <TEXT>The request &amp;1 has been declined.</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZABAP_GEBERIT_MC</ARBGB>
+     <MSGNR>005</MSGNR>
+     <TEXT>Invalid dates: End date is before start date.</TEXT>
     </T100>
    </T100>
   </asx:values>

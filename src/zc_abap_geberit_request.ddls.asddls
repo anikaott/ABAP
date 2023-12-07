@@ -10,6 +10,7 @@ define view entity ZC_ABAP_GEBERIT_REQUEST as projection on ZR_ABAP_GEBERIT_REQU
     StartDate,
     EndDate,
     Commentary,
+    @Consumption.valueHelpDefinition: [{ entity: { name: 'ZI_ABAP_GEBERIT_STATUS_VH', element: 'Status' } }]
     Status,
     CreatedBy,
     CreatedAt,
@@ -20,6 +21,7 @@ define view entity ZC_ABAP_GEBERIT_REQUEST as projection on ZR_ABAP_GEBERIT_REQU
     StatusCriticality,
     ApproverName,
     ApplicantName,
+    EmployeeName,
     
     _Employee : redirected to parent ZC_ABAP_GEBERIT_EMPLOYEE
 }

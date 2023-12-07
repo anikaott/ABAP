@@ -8,6 +8,7 @@ association [1..1] to ZI_ABAP_GEBERIT_STATUS_CT as _StatusText on $projection.Id
 association [1..1] to ZI_ABAP_GEBERIT_EMPLOYEE_CT as _EmployeeCT on $projection.Id = _EmployeeCT.Id
 {
    
+   @ObjectModel.text.element: [ 'EmployeeName' ]
     key id as Id,
     @ObjectModel.text.element: [ 'ApplicantName' ]
     applicant as Applicant,

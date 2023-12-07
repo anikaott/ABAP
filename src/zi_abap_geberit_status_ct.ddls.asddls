@@ -8,8 +8,8 @@ define view entity ZI_ABAP_GEBERIT_STATUS_CT as select from zabap_request
    status as Status,
    
    'Declined' as StatusTextA,
-   'Approved' as StatusTextB,
-   'Requested' as StatusTextG
+   'Approved' as StatusTextG,
+   'Requested' as StatusTextB
     
     
 }

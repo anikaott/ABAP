@@ -3,9 +3,10 @@
 define root view entity ZR_ABAP_GEBERIT_EMPLOYEE as select from zabap_employee
 composition [0..*] of ZR_ABAP_GEBERIT_DEMAND as _Demands
 composition [0..*] of ZR_ABAP_GEBERIT_REQUEST as _Requests
+association [1..1] to ZI_ABAP_GEBERIT_EMPLOYEE_CT as _EmployeeCT on $projection.Id = _EmployeeCT.Id
 
 {
-    @EndUserText: { label: 'Employee Id', quickInfo: 'Employee Id'}
+    @ObjectModel.text.element: [ 'EmployeeName' ]
     key id as Id,
     employee_number as EmployeeNumber,
     forname as Forname,
@@ -20,6 +21,8 @@ composition [0..*] of ZR_ABAP_GEBERIT_REQUEST as _Requests
     @Semantics.systemDateTime.lastChangedAt: true
     last_changed_at as LastChangedAt,
     //_association_name // Make association public
+    
+    _EmployeeCT.EmployeeName as EmployeeName,
      
     
     _Demands,

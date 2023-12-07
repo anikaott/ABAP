@@ -9,15 +9,14 @@ title.value: 'EmployeeName'
 
 }
 
-annotate entity ZC_ABAP_GEBERIT_EMPLOYEE
+annotate entity ZC_2_ABAP_GEBERIT_EMPLOYEE
     with 
 {
     @UI.facet: [ 
 
 { position: 10, type: #FIELDGROUP_REFERENCE, targetQualifier: 'EmployeeDetails', label: 'Employee Details'}, // wichtig ohne bindestrich weil bezeichner bei targetQualifier
 { position: 20 , type: #FIELDGROUP_REFERENCE, targetQualifier: 'AdminData', label: 'Administrative Data'},
-{ position: 30 , type: #LINEITEM_REFERENCE, targetElement: '_Demands', label: 'Demands'},
-{ position: 40 , type: #LINEITEM_REFERENCE, targetElement: '_Requests', label: 'Request'}
+{ position: 30 , type: #LINEITEM_REFERENCE, targetElement: '_Requests', label: 'Request'}
 // -> wo sollen daten angezeigt werden 
 
  ]

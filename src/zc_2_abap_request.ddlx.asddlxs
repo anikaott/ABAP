@@ -6,7 +6,7 @@
   title.value: 'Commentary',
   description.value: 'StartDate'
 }
-annotate view ZC_ABAP_GEBERIT_REQUEST with
+annotate view ZC_2_ABAP_GEBERIT_REQUEST with
 {
 
   /* Facets */
@@ -16,33 +16,38 @@ annotate view ZC_ABAP_GEBERIT_REQUEST with
     { position: 20, targetQualifier: 'AdminData', label: 'Administrative Data', type: #FIELDGROUP_REFERENCE }
   ]
   
-
+  @UI.lineItem: [
+  { position: 10, dataAction: 'ApproveRequest', label: 'Approve Request', type:#FOR_ACTION},
+  { position: 20, dataAction: 'DeclineRequest', label: 'Decline Request', type:#FOR_ACTION}]
 
   /* Fields */
   @UI.fieldGroup: [{ position: 10, qualifier: 'AdminData' }]
   Id;
 
   @UI.fieldGroup: [{ position: 20, qualifier: 'AdminData' }]
+  @UI.lineItem: [{ position: 20 }]
+  @UI.selectionField: [{ position: 10 }]
   Applicant;
 
-  @UI.lineItem: [{ position: 10 }]
-  @UI.fieldGroup: [{ position: 10, qualifier: 'RequestDetails' }]
-  Approver;
-
-  @UI.lineItem: [{ position: 20 }]
-  @UI.fieldGroup: [{ position: 20, qualifier: 'RequestDetails' }]
-  StartDate;
-  
   @UI.lineItem: [{ position: 30 }]
   @UI.fieldGroup: [{ position: 30, qualifier: 'RequestDetails' }]
-  EndDate;
-  
+  Approver;
+
   @UI.lineItem: [{ position: 40 }]
   @UI.fieldGroup: [{ position: 40, qualifier: 'RequestDetails' }]
+  StartDate;
+  
+  @UI.lineItem: [{ position: 50 }]
+  @UI.fieldGroup: [{ position: 50, qualifier: 'RequestDetails' }]
+  EndDate;
+  
+  @UI.lineItem: [{ position: 60 }]
+  @UI.fieldGroup: [{ position: 60, qualifier: 'RequestDetails' }]
   Commentary;
   
-  @UI.lineItem: [{ position: 50, criticality: 'StatusCriticality'}]
-  @UI.fieldGroup: [{ position: 50, qualifier: 'RequestDetails' }] // criticality: 'StatusCriticality'
+  @UI.lineItem: [{ position: 70, criticality: 'StatusCriticality'}]
+  @UI.fieldGroup: [{ position: 70, qualifier: 'RequestDetails'}]    //eventuell , criticality: 'StatusCriticality'
+  @UI.selectionField: [{ position: 20 }]
   Status;
   
   

@@ -25,5 +25,7 @@ define view entity ZC_2_ABAP_GEBERIT_REQUEST as projection on ZR_ABAP_GEBERIT_RE
     
     StatusCriticality,
     EmployeeName,
+    StatusName,
+    
     _Employee : redirected to parent ZC_2_ABAP_GEBERIT_EMPLOYEE
 }
