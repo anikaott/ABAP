@@ -23,6 +23,10 @@ CLASS lhc_Employee DEFINITION INHERITING FROM cl_abap_behavior_handler.
        IMPORTING keys FOR request~ValidateDates.
 
 
+      METHODS determinevacationdays FOR DETERMINE ON MODIFY
+      IMPORTING keys FOR request~DetermineVacationDays.
+
+
    " METHODS notenough FOR MODIFY
 "IMPORTING keys FOR ACTION employee~notenough RESULT result.
 
@@ -202,6 +206,43 @@ ENDCLASS.
   APPEND VALUE #( %tky = request-%tky ) to failed-request.
   ENDIF.
   ENDLOOP.
+  ENDMETHOD.
+
+
+
+
+      METHOD determinevacationdays.
+
+    "Read Requests
+    READ ENTITY IN LOCAL MODE zr_abap_geberit_request
+    ALL FIELDS
+    WITH CORRESPONDING #( keys )
+    RESULT DATA(requests).
+
+    LOOP AT requests INTO DATA(request).
+
+      "Calculation of Vacation Days
+      TRY.
+          DATA(calendar) = cl_fhc_calendar_runtime=>create_factorycalendar_runtime( 'SAP_DE_BW' ).
+        CATCH cx_fhc_runtime.
+          RETURN.
+      ENDTRY.
+
+      TRY.
+          DATA(working_days) = calendar->calc_workingdays_between_dates( iv_start = request-StartDate iv_end = request-EndDate ).
+        CATCH cx_fhc_runtime.
+          RETURN.
+      ENDTRY.
+
+      "Modify Requests
+      MODIFY ENTITY IN LOCAL MODE zr_abap_geberit_request
+      UPDATE FIELDS ( VacationDays )
+      WITH VALUE #( FOR r IN requests
+      ( %tky = r-%tky
+      VacationDays = working_days + 1 ) ).
+
+    ENDLOOP.
+
   ENDMETHOD.
 
 

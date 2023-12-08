@@ -58,9 +58,11 @@ authorization dependent by _Employee
 
 
   field ( readonly, numbering : managed ) Id;
-  field( readonly ) Employee;
+  field( readonly ) Employee, VacationDays, DateYear;
   field ( readonly ) CreatedBy, CreatedAt, LastChangedAt, LastChangedBy;
   association _Employee {with draft; }
+
+
 
   mapping for zabap_demand corresponding {
      Employee = employee;
@@ -91,6 +93,7 @@ authorization dependent by _Employee
 
   determination determinestatus on modify { create; }
   determination determinestatusrequestcomment on modify { field Commentary; }
+  determination DetermineVacationDays on modify { create; }
 
   determine action ValidateRequest {
   validation ValidateDates;
@@ -111,6 +114,7 @@ authorization dependent by _Employee
      EndDate = end_date;
      Commentary = commentary;
      Status = status;
+     VacationDays = vacation_days;
      CreatedAt = created_at;
      CreatedBy = created_by;
      LastChangedAt = last_changed_at;

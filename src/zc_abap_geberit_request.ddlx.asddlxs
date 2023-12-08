@@ -37,6 +37,10 @@ annotate view ZC_ABAP_GEBERIT_REQUEST with
   @UI.fieldGroup: [{ position: 30, qualifier: 'RequestDetails' }]
   EndDate;
   
+  @UI.lineItem: [{ position: 35 }]
+  @UI.fieldGroup: [{ position: 35, qualifier: 'RequestDetails' }]
+  VacationDays;
+  
   @UI.lineItem: [{ position: 40 }]
   @UI.fieldGroup: [{ position: 40, qualifier: 'RequestDetails' }]
   Commentary;
@@ -44,6 +48,8 @@ annotate view ZC_ABAP_GEBERIT_REQUEST with
   @UI.lineItem: [{ position: 50, criticality: 'StatusCriticality'}]
   @UI.fieldGroup: [{ position: 50, qualifier: 'RequestDetails' }] // criticality: 'StatusCriticality'
   Status;
+  
+  
   
   
   

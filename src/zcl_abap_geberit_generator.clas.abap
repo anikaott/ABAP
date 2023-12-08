@@ -126,6 +126,7 @@ request-end_date = '20220710'.
 request-approver = lisa.
 request-commentary = 'Sommerurlaub'.
 request-status = 'G'.
+request-vacation_days = '6'.
 GET TIME STAMP FIELD request-created_at.
 request-created_by = 'GENERATOR'.
 GET TIME STAMP FIELD request-last_changed_at.
@@ -139,6 +140,7 @@ request-end_date = '20221230'.
 request-approver = lisa.
 request-commentary = 'Weihnachtsurlaub'.
 request-status = 'A'.
+request-vacation_days = '4'.
 GET TIME STAMP FIELD request-created_at.
 request-created_by = 'GENERATOR'.
 GET TIME STAMP FIELD request-last_changed_at.
@@ -152,6 +154,7 @@ request-end_date = '20221230'.
 request-approver = lisa.
 request-commentary = 'Weihnachtsurlaub (2. Versuch)'.
 request-status = 'G'.
+request-vacation_days = '3'.
 GET TIME STAMP FIELD request-created_at.
 request-created_by = 'GENERATOR'.
 GET TIME STAMP FIELD request-last_changed_at.
@@ -165,6 +168,7 @@ request-end_date = '20230614'.
 request-approver = lisa.
 request-commentary = ' '.
 request-status = 'Genehmigt'.
+request-vacation_days = '13'.
 GET TIME STAMP FIELD request-created_at.
 request-created_by = 'GENERATOR'.
 GET TIME STAMP FIELD request-last_changed_at.
@@ -178,6 +182,7 @@ request-end_date = '20231231'.
 request-approver = lisa.
 request-commentary = 'Winterurlaub'.
 request-status = 'B'.
+request-vacation_days = '6'.
 GET TIME STAMP FIELD request-created_at.
 request-created_by = 'GENERATOR'.
 GET TIME STAMP FIELD request-last_changed_at.
