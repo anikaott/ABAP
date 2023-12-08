@@ -17,7 +17,6 @@ association [1..1] to ZI_ABAP_GEBERIT_EMPLOYEE_CT as _EmployeeCT on $projection.
     start_date as StartDate,
     end_date as EndDate,
     commentary as Commentary,
-    @ObjectModel.text.element: [ 'StatusName' ]
     status as Status,
     vacation_days as VacationDays,
     
