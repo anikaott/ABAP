@@ -43,7 +43,56 @@ authorization master ( instance )
 }
 
 
+define behavior for ZR_ABAP_GEBERIT_REQUEST alias Request//alias <alias_name>
+persistent table zabap_request
+draft table zabap_request_d
+lock dependent by _Employee
+authorization dependent by _Employee
+//etag master <field_name>
+{
 
+  update;
+  delete;
+
+  action ApproveRequest result [1] $self;
+  action DeclineRequest result [1] $self;
+
+
+  determination determinestatus on modify { create; }
+  determination determinestatusrequestcomment on modify { field Commentary; }
+  determination DetermineVacationDays on modify { create; }
+
+
+
+  validation ValidateNotEnoughVacationDays on save {create; }
+  determine action ValidateRequest {
+  validation ValidateDates;
+  validation ValidateNotEnoughVacationDays;
+  }
+  validation ValidateDates on save { create; update; }
+
+
+  field ( readonly, numbering : managed ) Id;
+  field ( mandatory : create ) Approver, StartDate, EndDate;
+  field ( readonly : update ) Approver, StartDate, EndDate;
+  field ( readonly ) Applicant, Status, CreatedAt, CreatedBy, LastChangedAt, LastChangedBy;
+  association _Employee {with draft; }
+
+  mapping for zabap_request corresponding{
+     Id = id;
+     Applicant = applicant;
+     Approver = approver;
+     StartDate = start_date;
+     EndDate = end_date;
+     Commentary = commentary;
+     Status = status;
+     VacationDays = vacation_days;
+     CreatedAt = created_at;
+     CreatedBy = created_by;
+     LastChangedAt = last_changed_at;
+     LastChangedBy = last_changed_by;
+ }
+ }
 
 define behavior for ZR_ABAP_GEBERIT_DEMAND alias Demand//alias <alias_name>
 persistent table zabap_demand
@@ -76,48 +125,3 @@ authorization dependent by _Employee
   }
 
 
-
-define behavior for ZR_ABAP_GEBERIT_REQUEST alias Request//alias <alias_name>
-persistent table zabap_request
-draft table zabap_request_d
-lock dependent by _Employee
-authorization dependent by _Employee
-//etag master <field_name>
-{
-
-  update;
-  delete;
-
-  action ApproveRequest result [1] $self;
-  action DeclineRequest result [1] $self;
-
-  determination determinestatus on modify { create; }
-  determination determinestatusrequestcomment on modify { field Commentary; }
-  determination DetermineVacationDays on modify { create; }
-
-  determine action ValidateRequest {
-  validation ValidateDates;
-  }
-  validation ValidateDates on save { create; }
-
-  field ( readonly, numbering : managed ) Id;
-  field ( mandatory : create ) Approver, StartDate, EndDate;
-  field ( readonly : update ) Approver, StartDate, EndDate;
-  field ( readonly ) Applicant, Status, CreatedAt, CreatedBy, LastChangedAt, LastChangedBy;
-  association _Employee {with draft; }
-
-  mapping for zabap_request corresponding{
-     Id = id;
-     Applicant = applicant;
-     Approver = approver;
-     StartDate = start_date;
-     EndDate = end_date;
-     Commentary = commentary;
-     Status = status;
-     VacationDays = vacation_days;
-     CreatedAt = created_at;
-     CreatedBy = created_by;
-     LastChangedAt = last_changed_at;
-     LastChangedBy = last_changed_by;
- }
-}

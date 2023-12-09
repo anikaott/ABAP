@@ -72,49 +72,6 @@ employee-created_by = 'GENERATOR'.
 GET TIME STAMP FIELD employee-last_changed_at.
 APPEND employee to employees.
 
-"----------------DEMAND---------------------"
-
-demand-client = sy-mandt.
-demand-id = cl_system_uuid=>create_uuid_x16_static(  ).
-demand-employee = hans.
-demand-date_year = '2022'.
-demand-vacation_days = '30'.
-GET TIME STAMP FIELD demand-created_at.
-demand-created_by = 'GENERATOR'.
-GET TIME STAMP FIELD demand-last_changed_at.
-APPEND demand to demands.
-
-demand-client = sy-mandt.
-demand-id = cl_system_uuid=>create_uuid_x16_static(  ).
-*employee-id = hans.
-demand-employee = hans.
-demand-date_year = '2023'.
-demand-vacation_days = '30'.
-GET TIME STAMP FIELD demand-created_at.
-demand-created_by = 'GENERATOR'.
-GET TIME STAMP FIELD demand-last_changed_at.
-APPEND demand to demands.
-
-
-demand-client = sy-mandt.
-demand-id = cl_system_uuid=>create_uuid_x16_static(  ).
-demand-employee = lisa.
-demand-date_year = '2023'.
-demand-vacation_days = '30'.
-GET TIME STAMP FIELD demand-created_at.
-demand-created_by = 'GENERATOR'.
-GET TIME STAMP FIELD demand-last_changed_at.
-APPEND demand to demands.
-
-demand-client = sy-mandt.
-demand-id = cl_system_uuid=>create_uuid_x16_static(  ).
-demand-employee = petra.
-demand-date_year = '2023'.
-demand-vacation_days = '7'.
-GET TIME STAMP FIELD demand-created_at.
-demand-created_by = 'GENERATOR'.
-GET TIME STAMP FIELD demand-last_changed_at.
-APPEND demand to demands.
 
 "---------------REQUEST-----------------"
 
@@ -200,6 +157,54 @@ GET TIME STAMP FIELD request-created_at.
 request-created_by = 'GENERATOR'.
 GET TIME STAMP FIELD request-last_changed_at.
 APPEND request to requests.
+
+
+
+"----------------DEMAND---------------------"
+
+demand-client = sy-mandt.
+demand-id = cl_system_uuid=>create_uuid_x16_static(  ).
+demand-employee = hans.
+demand-date_year = '2022'.
+demand-vacation_days = '30'.
+GET TIME STAMP FIELD demand-created_at.
+demand-created_by = 'GENERATOR'.
+GET TIME STAMP FIELD demand-last_changed_at.
+APPEND demand to demands.
+
+demand-client = sy-mandt.
+demand-id = cl_system_uuid=>create_uuid_x16_static(  ).
+*employee-id = hans.
+demand-employee = hans.
+demand-date_year = '2023'.
+demand-vacation_days = '30'.
+GET TIME STAMP FIELD demand-created_at.
+demand-created_by = 'GENERATOR'.
+GET TIME STAMP FIELD demand-last_changed_at.
+APPEND demand to demands.
+
+
+demand-client = sy-mandt.
+demand-id = cl_system_uuid=>create_uuid_x16_static(  ).
+demand-employee = lisa.
+demand-date_year = '2023'.
+demand-vacation_days = '30'.
+GET TIME STAMP FIELD demand-created_at.
+demand-created_by = 'GENERATOR'.
+GET TIME STAMP FIELD demand-last_changed_at.
+APPEND demand to demands.
+
+demand-client = sy-mandt.
+demand-id = cl_system_uuid=>create_uuid_x16_static(  ).
+demand-employee = petra.
+demand-date_year = '2023'.
+demand-vacation_days = '7'.
+GET TIME STAMP FIELD demand-created_at.
+demand-created_by = 'GENERATOR'.
+GET TIME STAMP FIELD demand-last_changed_at.
+APPEND demand to demands.
+
+
 
 
 INSERT zabap_employee FROM TABLE  @Employees.

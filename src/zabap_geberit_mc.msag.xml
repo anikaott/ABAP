@@ -38,6 +38,12 @@
      <MSGNR>005</MSGNR>
      <TEXT>Invalid dates: End date is before start date.</TEXT>
     </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZABAP_GEBERIT_MC</ARBGB>
+     <MSGNR>006</MSGNR>
+     <TEXT> Not enough vacation days available &amp;1</TEXT>
+    </T100>
    </T100>
   </asx:values>
  </asx:abap>

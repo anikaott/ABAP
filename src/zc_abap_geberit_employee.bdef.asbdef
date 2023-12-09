@@ -20,21 +20,22 @@ define behavior for ZC_ABAP_GEBERIT_EMPLOYEE //alias <alias_name>
   use action Resume;
 }
 
-define behavior for ZC_ABAP_GEBERIT_DEMAND //alias <alias_name>
-{
-
-use update;
-use delete;
-
-  use association _Employee{with draft;}
-}
-
 define behavior for ZC_ABAP_GEBERIT_REQUEST //alias <alias_name>
 {
   use update;
   use delete;
 
   use action ValidateRequest;
+
+  use association _Employee{with draft;}
+}
+
+
+define behavior for ZC_ABAP_GEBERIT_DEMAND //alias <alias_name>
+{
+
+use update;
+use delete;
 
   use association _Employee{with draft;}
 }

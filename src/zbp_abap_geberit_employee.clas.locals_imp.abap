@@ -26,6 +26,9 @@ CLASS lhc_Employee DEFINITION INHERITING FROM cl_abap_behavior_handler.
       METHODS determinevacationdays FOR DETERMINE ON MODIFY
       IMPORTING keys FOR request~DetermineVacationDays.
 
+      METHODS ValidateNotEnoughVacationDays FOR VALIDATE ON SAVE
+       IMPORTING keys FOR request~ValidateNotEnoughVacationDays.
+
 
    " METHODS notenough FOR MODIFY
 "IMPORTING keys FOR ACTION employee~notenough RESULT result.
@@ -244,6 +247,71 @@ ENDCLASS.
     ENDLOOP.
 
   ENDMETHOD.
+
+
+
+
+  METHOD ValidateNotEnoughVacationDays.
+
+    DATA message TYPE REF TO zcm_abap_geberit.
+
+    " Read Vacation Applications
+    READ ENTITY IN LOCAL MODE ZR_ABAP_GEBERIT_REQUEST
+        ALL FIELDS
+        WITH CORRESPONDING #( keys )
+        RESULT DATA(requests).
+
+    " Process Vacation Applications
+       LOOP AT requests INTO DATA(request).
+
+      " Calculate the necessary Vacation Days
+      TRY.
+          DATA(calendar) = cl_fhc_calendar_runtime=>create_factorycalendar_runtime( 'SAP_DE_BW' ).
+        CATCH cx_fhc_runtime.
+
+          "handle exception
+          RETURN.
+      ENDTRY.
+
+      TRY.
+          DATA(VacationDays) = calendar->calc_workingdays_between_dates( iv_start = request-startdate iv_end = request-enddate ) + 1.
+        CATCH cx_fhc_runtime.
+
+          "handle exception
+          RETURN.
+      ENDTRY.
+
+      SELECT SINGLE FROM zabap_demand FIELDS SUM( vacation_days ) WHERE employee = @request-applicant INTO @DATA(vac_all_days).
+      SELECT SINGLE FROM zabap_request FIELDS SUM( vacation_days ) WHERE applicant = @request-applicant AND status = 'B' INTO @DATA(vac_all_planned_b_days).
+      SELECT SINGLE FROM zabap_request FIELDS SUM( vacation_days ) WHERE applicant = @request-applicant AND status = 'G' INTO @DATA(vac_all_planned_g_days).
+
+      DATA(free_vac_days) = vac_all_days - vac_all_planned_b_days - vac_all_planned_g_days.
+
+      " Validate Vacation Application and create Error Message
+      IF vacationdays > free_vac_days.
+        message = NEW zcm_abap_geberit(
+            severity = if_abap_behv_message=>severity-error
+            textid = zcm_abap_geberit=>not_enough_vac_days commentary = request-Commentary ).
+        APPEND VALUE #( %tky     = request-%tky
+                        %element = VALUE #( status = if_abap_behv=>mk-on )
+                        %msg     = message ) TO reported-request.
+        APPEND VALUE #( %tky = request-%tky ) TO failed-request.
+      ENDIF.
+
+    ENDLOOP.
+
+  ENDMETHOD.
+
+
+
+
+
+
+
+
+
+
+
 
 
 

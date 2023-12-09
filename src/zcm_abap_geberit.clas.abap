@@ -75,6 +75,17 @@ CLASS zcm_abap_geberit DEFINITION
 
 
 
+     constants:
+       BEGIN OF not_enough_vac_days,
+        msgid type symsgid value 'ZABAP_GEBERIT_MC',
+        msgno type symsgno value '006',
+        attr1 type scx_attrname value 'COMMENTARY',
+        attr2 type scx_attrname value '',
+        attr3 type scx_attrname value '',
+        attr4 type scx_attrname value '',
+       END OF not_enough_vac_days.
+
+
 
 
 *      constants:
