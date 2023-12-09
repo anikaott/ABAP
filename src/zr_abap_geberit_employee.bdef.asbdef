@@ -74,7 +74,7 @@ authorization dependent by _Employee
 
   field ( readonly, numbering : managed ) Id;
   field ( mandatory : create ) Approver, StartDate, EndDate;
-  field ( readonly : update ) Approver, StartDate, EndDate;
+  //field ( readonly : update ) Approver, StartDate, EndDate;
   field ( readonly ) Applicant, Status, CreatedAt, CreatedBy, LastChangedAt, LastChangedBy;
   association _Employee {with draft; }
 
@@ -123,5 +123,3 @@ authorization dependent by _Employee
      LastChangedBy = last_changed_by;
   }
   }
-
-

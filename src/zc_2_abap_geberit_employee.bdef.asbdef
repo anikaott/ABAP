@@ -20,7 +20,7 @@ define behavior for ZC_2_ABAP_GEBERIT_EMPLOYEE //alias <alias_name>
 define behavior for ZC_2_ABAP_GEBERIT_REQUEST //alias <alias_name>
 {
   use update;
-  use delete;
+  //use delete;
 
   use action ApproveRequest;
   use action DeclineRequest;
