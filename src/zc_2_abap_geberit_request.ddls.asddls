@@ -15,7 +15,7 @@ define view entity ZC_2_ABAP_GEBERIT_REQUEST as projection on ZR_ABAP_GEBERIT_RE
     Commentary,
     
     @Consumption.valueHelpDefinition: [{ entity: { name: 'ZI_ABAP_GEBERIT_STATUS_VH', element: 'Status' } }]
-//    @ObjectModel.text.element: [ 'StatusName' ]
+    @ObjectModel.text.element: [ 'StatusName' ]
     Status,
     CreatedBy,
     CreatedAt,
