@@ -50,6 +50,10 @@ annotate view ZC_2_ABAP_GEBERIT_REQUEST with
   @UI.selectionField: [{ position: 20 }]
   Status;
   
+   @UI.lineItem: [{ position: 55 }]
+  @UI.fieldGroup: [{ position: 55, qualifier: 'RequestDetails' }]
+  VacationDays;
+  
   
   
  @UI.fieldGroup: [{ position: 20, qualifier: 'AdminData' }]
